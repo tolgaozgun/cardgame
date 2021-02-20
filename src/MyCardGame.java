@@ -1,11 +1,16 @@
 import java.util.Scanner;
 import cardgame.*;
 
-// MyCardGame - provides a menu allowing any of the players to play their card,
-//              an option to see the score card, and one to quit the game at any time.
-//              When the game is over it dislays the winners.
-// author:
-// date:
+/**
+ * Provides a menu allowing any of the players to play their card,
+ * an option to see the score card, and one to quit the game at any time.
+ * When the game is over it displays the winners.
+ * 
+ * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
+ * @version 1.06
+ * @date 21/02/2020
+ */
+
 public class MyCardGame {
 	
     public static void main( String[] args ) {

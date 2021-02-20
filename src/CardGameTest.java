@@ -4,9 +4,14 @@ import cardgame.Cards;
 import cardgame.Player;
 import cardgame.ScoreCard;
 
-// CardGameTest
-// author:
-// date:
+/**
+ * Test class for this card game. Tests every functionality
+ * in the code if it works optimally.
+ * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
+ * @version 1.06
+ * @date 21/02/2021
+ *
+ */
 public class CardGameTest {
     public static void main( String[] args ) {
         System.out.println( "Start of CardGameTest\n" );

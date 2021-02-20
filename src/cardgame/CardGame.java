@@ -8,13 +8,14 @@ import java.util.ArrayList;
  * turn requests.
  *  
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.05 
- * @date 20/02/2021
+ * @version 1.06
+ * @date 21/02/2021
  */
 
 public class CardGame {
 	// Constants
 	final int         MAX_ROUNDS = 13;
+	final int         NUM_PLAYERS = 4;
 	
     // Properties
     Cards             fullPack;
@@ -42,16 +43,16 @@ public class CardGame {
         fullPack = new Cards( true );
         fullPack.shuffle();
         
-        for ( int i = 0; i < 13 ; i++ ) {
+        for ( int i = 0; i < MAX_ROUNDS ; i++ ) {
         	players.get( 0 ).add( fullPack.getTopCard() );
         	players.get( 1 ).add( fullPack.getTopCard() );
         	players.get( 2 ).add( fullPack.getTopCard() );
         	players.get( 3 ).add( fullPack.getTopCard() );
         }
         
-        scoreCard = new ScoreCard( players.size() );
-        cardsOnTable = new Cards[ players.size() ];
-        for( int i = 0; i < players.size(); i++ ) {
+        scoreCard = new ScoreCard( NUM_PLAYERS );
+        cardsOnTable = new Cards[ NUM_PLAYERS ];
+        for( int i = 0; i < NUM_PLAYERS; i++ ) {
         	cardsOnTable[i] = new Cards(false);
         }
         turnOfPlayer = 0;
@@ -110,14 +111,27 @@ public class CardGame {
     /**
      * Gets the score of a player with the specified index value.
      * Index value should be between 0-3 inclusive.
-     * @param playerNumber The index value of a player.
+     * Returns 0 for undefined players
+     * @param playerNumber The integer value of the index of a player.
      * @return The score of the specified player.
      */
     public int getScore( int playerNumber ) {
+    	if( playerNumber >= NUM_PLAYERS || playerNumber < 0 ) {
+    		return 0;
+    	}
         return scoreCard.getScore( playerNumber );
     }
     
+    /**
+     * Gets the name of a player with the specified index value.
+     * Index value should be between 0-3 inclusive.
+     * @param playerNumber The integer value of the index of a player.
+     * @return The score of the specified player.
+     */
     public String getName( int playerNumber ) {
+    	if( playerNumber >= NUM_PLAYERS || playerNumber < 0 ) {
+    		return null;
+    	}
         return players.get( playerNumber ).getName();
     }
     
@@ -152,28 +166,39 @@ public class CardGame {
     	Card c;
     	
     	max = 0;
-    	winners = new int[ players.size() ];
+    	winners = new int[ NUM_PLAYERS ];
     	winnerSize = 0;
-    	for( int i = 0; i < players.size(); i++ ) {
+    	// Iterates over each player's top card on the table.
+    	// If a new maximum is found, winner array is cleared and
+    	// the new player is put inside the array. Max value is 
+    	// changed to the found value.
+    	// If the current value is equal to prior maximum value,
+    	// current player is added to winners array.
+    	for( int i = 0; i < NUM_PLAYERS; i++ ) {
     		c = cardsOnTable[ i ].getTopCard();
     		if( c.getFaceValue() == max ) {
     			winners[ winnerSize ] = i;
     			winnerSize++;
     		} else if (c.getFaceValue() > max ){
     			max = c.getFaceValue();
-    			winners = new int[ players.size() ];
+    			winners = new int[ NUM_PLAYERS ];
     			winners[ 0 ] = i;
     			winnerSize = 1;
     		}
     	}
     	
+    	// Iterates over each winner and gets the player
+    	// object from their index value. Then prints
+    	// their name and announces them as winners.
         for( int i = 0; i < winnerSize; i++ ) {
         	player = players.get(  winners[ i ] );
         	System.out.print( player.getName() );
+        	
         	if( i != winnerSize - 1) {
         		System.out.print( ", " );
         	}
-        	scoreCard.update(winners[i], 1);
+        	
+        	scoreCard.update( winners[i], 1 );
         }
         System.out.println( " won this round! " );
     }

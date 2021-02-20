@@ -7,8 +7,8 @@ package cardgame;
  * or printing out a card's values.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.05
- * @date 20/02/2021
+ * @version 1.06
+ * @date 21/02/2021
  * 
  */
 
@@ -19,7 +19,7 @@ public class Card {
                              "6", "7", "8", "9", "10",
                              "J", "Q", "K"};
     
-    final int NOOFCARDSINSUIT = 13;
+    final int NUM_CARDS_IN_SUIT = 13;
     
     // Properties
     int  cardNo;
@@ -32,7 +32,7 @@ public class Card {
      * @param suit       The integer value of the card's suit.
      */
     public Card( int faceValue, int suit ) {
-        cardNo = faceValue + suit * NOOFCARDSINSUIT;
+        cardNo = faceValue + suit * NUM_CARDS_IN_SUIT;
     }
     
     /**
@@ -54,7 +54,7 @@ public class Card {
      * @return Integer value of the card's number (from 0 to 12 inclusive). 
      */
     public int getFaceValue() {
-        return cardNo % NOOFCARDSINSUIT;
+        return cardNo % NUM_CARDS_IN_SUIT;
     }
     
     /**
@@ -68,7 +68,7 @@ public class Card {
      * @return Integer value of the card's suit (from 0 to 3 inclusive). 
      */
     public int getSuit() {
-        return cardNo / NOOFCARDSINSUIT;
+        return cardNo / NUM_CARDS_IN_SUIT;
     }
 
     /**

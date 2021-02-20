@@ -8,8 +8,8 @@ import java.util.Arrays;
  * Caution: invalid player numbers result in run-time exception!
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.05
- * @date 20/02/2021
+ * @version 1.06
+ * @date 21/02/2021
  *
  */
 
@@ -34,20 +34,27 @@ public class ScoreCard {
     // Methods
     /**
      * Returns the score of a player with the given index value
+     * Returns 0 for an non-existing index value.
      * @param playerNo Integer index value of a player.
      * @return The score of the specified player.
      */
     public int getScore( int playerNo ) {
+    	if( playerNo > scores.length || playerNo < 0 ) {
+    		return 0;
+    	}
         return scores[ playerNo ];
     }
     
     /**
      * Updates the score of a player.
+     * Doesn't do anything for an non-existing index value.
      * @param playerNo Integer index value of a player.
      * @param amount The score to be added to this player.
      */
     public void update( int playerNo, int amount ) {
-        scores[ playerNo ] += amount;
+    	if( playerNo < scores.length && playerNo > 0 ) {
+            scores[ playerNo ] += amount;
+    	}
     }
     
     /**
