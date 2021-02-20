@@ -8,11 +8,13 @@ import cardgame.ScoreCard;
  * Test class for this card game. Tests every functionality
  * in the code if it works optimally.
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.06
+ * @version 1.07
  * @date 21/02/2021
  *
  */
+
 public class CardGameTest {
+	
     public static void main( String[] args ) {
         System.out.println( "Start of CardGameTest\n" );
         

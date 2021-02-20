@@ -8,7 +8,7 @@ import java.util.Random;
  * and to shuffle the cards.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.06
+ * @version 1.07
  * @date 21/02/2021
  * 
  */

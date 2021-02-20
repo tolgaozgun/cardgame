@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Caution: invalid player numbers result in run-time exception!
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.06
+ * @version 1.07
  * @date 21/02/2021
  *
  */
@@ -34,13 +34,13 @@ public class ScoreCard {
     // Methods
     /**
      * Returns the score of a player with the given index value
-     * Returns 0 for an non-existing index value.
+     * Returns -1 for an non-existing index value.
      * @param playerNo Integer index value of a player.
      * @return The score of the specified player.
      */
     public int getScore( int playerNo ) {
     	if( playerNo > scores.length || playerNo < 0 ) {
-    		return 0;
+    		return -1;
     	}
         return scores[ playerNo ];
     }
@@ -52,7 +52,7 @@ public class ScoreCard {
      * @param amount The score to be added to this player.
      */
     public void update( int playerNo, int amount ) {
-    	if( playerNo < scores.length && playerNo > 0 ) {
+    	if( playerNo < scores.length && playerNo >= 0 ) {
             scores[ playerNo ] += amount;
     	}
     }
@@ -90,7 +90,13 @@ public class ScoreCard {
 		maxValue = scores[ 0 ];
 		returnArray = new int[ scores.length ];
 		returnSize = 0;
-		
+
+    	// Iterates over each player's score.
+    	// If a new maximum is found, return array is cleared and
+    	// the new player is put inside the array. Max value is 
+    	// changed to the found value.
+    	// If the current value is equal to prior maximum value,
+    	// current player is added to winners array.
 		for( int i = 0; i < scores.length; i++ ) {
 			if( scores[ i ] > maxValue ) {
 				maxValue = scores[ i ];
@@ -102,6 +108,8 @@ public class ScoreCard {
 				returnSize++;
 			}
 		}
+		// Concats the current array to the corresponding size
+		// while returning.
 		return Arrays.copyOf(returnArray, returnSize);
 	}
 } 

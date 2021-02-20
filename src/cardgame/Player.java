@@ -4,7 +4,7 @@ package cardgame;
  * Simple card game player with name and hand of cards
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.06
+ * @version 1.07
  * @date 21/02/2021
  *
  */
