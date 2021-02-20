@@ -8,11 +8,14 @@ import java.util.ArrayList;
  * turn requests.
  *  
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.04 
+ * @version 1.05 
  * @date 20/02/2021
  */
 
 public class CardGame {
+	// Constants
+	final int         MAX_ROUNDS = 13;
+	
     // Properties
     Cards             fullPack;
     ArrayList<Player> players;
@@ -52,7 +55,7 @@ public class CardGame {
         	cardsOnTable[i] = new Cards(false);
         }
         turnOfPlayer = 0;
-        roundNo = 0;
+        roundNo = 1;
     }
     
     /**
@@ -101,7 +104,7 @@ public class CardGame {
      * @return Boolean if the game is over.
      */
     public boolean isGameOver() {
-        return roundNo > 12;
+        return roundNo > MAX_ROUNDS;
     }
      
     /**
@@ -115,9 +118,7 @@ public class CardGame {
     }
     
     public String getName( int playerNumber ) {
-    	Player player;
-    	player = players.get( playerNumber );
-        return player.getName();
+        return players.get( playerNumber ).getName();
     }
     
     /**
@@ -126,7 +127,7 @@ public class CardGame {
      * @return Integer value of current round number.
      */
     public int getRoundNo() {
-        return roundNo + 1;
+        return roundNo;
     }
 
     /**
@@ -148,26 +149,26 @@ public class CardGame {
     	int max;
     	int winnerSize;
     	Player player;
-		Card c;
+    	Card c;
     	
     	max = 0;
-    	winners = new int[4];
+    	winners = new int[ players.size() ];
     	winnerSize = 0;
-    	for( int i = 0; i < 4; i++ ) {
-    		c = cardsOnTable[i].getTopCard();
+    	for( int i = 0; i < players.size(); i++ ) {
+    		c = cardsOnTable[ i ].getTopCard();
     		if( c.getFaceValue() == max ) {
-    			winners[winnerSize] = i;
+    			winners[ winnerSize ] = i;
     			winnerSize++;
     		} else if (c.getFaceValue() > max ){
     			max = c.getFaceValue();
-    			winners = new int[4];
-    			winners[0] = i;
+    			winners = new int[ players.size() ];
+    			winners[ 0 ] = i;
     			winnerSize = 1;
     		}
     	}
     	
         for( int i = 0; i < winnerSize; i++ ) {
-        	player = players.get(  winners[i] );
+        	player = players.get(  winners[ i ] );
         	System.out.print( player.getName() );
         	if( i != winnerSize - 1) {
         		System.out.print( ", " );

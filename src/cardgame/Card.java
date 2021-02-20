@@ -7,7 +7,7 @@ package cardgame;
  * or printing out a card's values.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.04
+ * @version 1.05
  * @date 20/02/2021
  * 
  */

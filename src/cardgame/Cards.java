@@ -8,7 +8,7 @@ import java.util.Random;
  * and to shuffle the cards.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.04 
+ * @version 1.05
  * @date 20/02/2021
  * 
  */
@@ -16,7 +16,7 @@ import java.util.Random;
 public class Cards {
 	
 	// Constants
-    final int NOOFCARDSINFULLPACK = 52;
+    final int NUM_CARDS_IN_FULLPACK = 52;
     
     // Properties
     Card[] cards;
@@ -29,7 +29,7 @@ public class Cards {
      * @param fullPack Whether it should create a full pack of cards.
      */
     public Cards( boolean fullPack ) {
-        cards = new Card[ NOOFCARDSINFULLPACK ];
+        cards = new Card[ NUM_CARDS_IN_FULLPACK ];
         valid = 0;
         
         if ( fullPack ) {
@@ -74,7 +74,7 @@ public class Cards {
      * Creates a full pack of cards for this card array.
      */
     private void createFullPackOfCards() {
-    	for( int i = 0; i < NOOFCARDSINFULLPACK; i++ ) {
+    	for( int i = 0; i < NUM_CARDS_IN_FULLPACK; i++ ) {
     		addTopCard( new Card(i) );
     	}
     }

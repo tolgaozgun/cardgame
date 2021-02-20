@@ -47,8 +47,6 @@ public class Player {
      * @return Top card of this player.
      */
 	public Card playCard() {
-		Card card;
-		card = hand.getTopCard();
-		return card;
+		return hand.getTopCard();
 	}  
 } 
