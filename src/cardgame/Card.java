@@ -5,7 +5,7 @@
  * or printing out a card's values.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.02
+ * @version 1.03
  * @date 20/02/2021
  * 
  */
@@ -100,15 +100,6 @@ public class Card {
      * @return Integer value of -1, 0, 1 depending on the result.
      */
     public int compareTo( Card c ) {
-    	int returnValue;
-    	
-    	if ( getFaceValue() > c.getFaceValue() ) {
-    		returnValue = 1;
-    	} else if ( getFaceValue() == c.getFaceValue() ) {
-    		returnValue = 0;
-    	} else {
-    		returnValue = -1;
-    	}
-        return returnValue;
+    	return Integer.compare( getFaceValue(), c.getFaceValue() );
     }
 }
