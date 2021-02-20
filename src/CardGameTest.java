@@ -1,5 +1,8 @@
-import java.util.Scanner;
-import cardgame.*;
+import cardgame.Card;
+import cardgame.CardGame;
+import cardgame.Cards;
+import cardgame.Player;
+import cardgame.ScoreCard;
 
 // CardGameTest
 // author:
@@ -8,7 +11,6 @@ public class CardGameTest
 {
     public static void main( String[] args)
     {
-        Scanner scan = new Scanner( System.in );
         System.out.println( "Start of CardGameTest\n");
         
         // CONSTANTS
@@ -57,8 +59,16 @@ public class CardGameTest
         player2.add( card );
         player3.add( card );
         player4.add( card );
-        System.out.println( "Player 1 plays " + game.playTurn( player1, card ) );
+        System.out.println( "Turn: " + game.getTurnOfPlayerNo() + " Round: " + game.getRoundNo() );
+        game.playTurn( player1, card );
+        System.out.println( "Is turn of Player 2? " + game.isTurnOf( player2 ) );
+        System.out.println( "Turn: " + game.getTurnOfPlayerNo() + " Round: " + game.getRoundNo() );
         game.playTurn( player2, card );
+        System.out.println( "Turn: " + game.getTurnOfPlayerNo() + " Round: " + game.getRoundNo() );
+        game.playTurn( player3, card );
+        System.out.println( "Turn: " + game.getTurnOfPlayerNo() + " Round: " + game.getRoundNo() );
+        game.playTurn( player4, card );
+        
         
         // Once you have all the bits working, complete the MyCardGame program
         // that provides a menu allowing any of the players to play their card,
