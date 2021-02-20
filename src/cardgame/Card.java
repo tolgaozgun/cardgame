@@ -1,3 +1,5 @@
+package cardgame;
+
 /**
  * 
  * A single playing Card class that holds suit and face value properties.
@@ -5,12 +7,10 @@
  * or printing out a card's values.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.03
+ * @version 1.04
  * @date 20/02/2021
  * 
  */
-
-package cardgame;
 
 public class Card {
     // Constants

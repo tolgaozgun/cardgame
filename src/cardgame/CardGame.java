@@ -1,15 +1,16 @@
+package cardgame;
+
+import java.util.ArrayList;
+
 /**
  * CardGame class that manages the game. Creates and holds all player objects,
  * creates the deck and deals it to the players. Also handles player's play
  * turn requests.
  *  
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.02 
+ * @version 1.04 
  * @date 20/02/2021
  */
-package cardgame;
-
-import java.util.ArrayList;
 
 public class CardGame {
     // Properties

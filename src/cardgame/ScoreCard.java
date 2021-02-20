@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Caution: invalid player numbers result in run-time exception!
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.02
+ * @version 1.04
  * @date 20/02/2021
  *
  */

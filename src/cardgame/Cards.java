@@ -1,3 +1,6 @@
+package cardgame;
+
+import java.util.Random;
 
 /**
  * Maintains a collection of zero or more playing cards.
@@ -5,14 +8,10 @@
  * and to shuffle the cards.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.02 
+ * @version 1.04 
  * @date 20/02/2021
  * 
  */
-
-package cardgame;
-
-import java.util.Random;
 
 public class Cards {
 	
