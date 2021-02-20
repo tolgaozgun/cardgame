@@ -1,12 +1,18 @@
+/**
+ * CardGame class that manages the game. Creates and holds all player objects,
+ * creates the deck and deals it to the players. Also handles player's play
+ * turn requests.
+ *  
+ * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
+ * @version 1.02 
+ * @date 20/02/2021
+ */
 package cardgame;
 
 import java.util.ArrayList;
 
-// Cardgame
-// author:
-// date:
 public class CardGame {
-    // properties
+    // Properties
     Cards             fullPack;
     ArrayList<Player> players;
     ScoreCard         scoreCard;
@@ -14,7 +20,14 @@ public class CardGame {
     int               roundNo;
     int               turnOfPlayer;
     
-    // constructors
+    // Constructors
+    /**
+     * Initiates a CardGame instance with four Player objects.
+     * @param p1 First player
+     * @param p2 Second player
+     * @param p3 Third player
+     * @param p4 Fourth player
+     */
     public CardGame( Player p1, Player p2, Player p3, Player p4 ) {
     	players = new ArrayList<Player>();
         players.add( p1 );
@@ -41,7 +54,15 @@ public class CardGame {
         roundNo = 0;
     }
     
-    // methods
+    /**
+     * This method plays a card for a player.
+     * Returns false if
+     * - Game is over
+     * - It is not specified player's turn.
+     * @param p Player to play
+     * @param c Card to play
+     * @return Boolean whether the card could be played.
+     */
     public boolean playTurn( Player p, Card c ) {
     	if( isGameOver() ) {
     		return false;
@@ -65,14 +86,29 @@ public class CardGame {
     	return true;
     }
     
+    /**
+     * Returns a boolean whether it is the specified player's turn.
+     * @param p The player to check
+     * @return Boolean whether it is the specified player's turn.
+     */
     public boolean isTurnOf( Player p ) {
         return players.indexOf( p ) == turnOfPlayer;
     }
     
+    /**
+     * Returns a boolean regarding if the game is over
+     * @return Boolean if the game is over.
+     */
     public boolean isGameOver() {
         return roundNo > 12;
     }
      
+    /**
+     * Gets the score of a player with the specified index value.
+     * Index value should be between 0-3 inclusive.
+     * @param playerNumber The index value of a player.
+     * @return The score of the specified player.
+     */
     public int getScore( int playerNumber ) {
         return scoreCard.getScore( playerNumber );
     }
@@ -83,14 +119,29 @@ public class CardGame {
         return player.getName();
     }
     
+    /**
+     * Gets the current round number.
+     * Round numbers go from 1 to 13 inclusive.
+     * @return Integer value of current round number.
+     */
     public int getRoundNo() {
         return roundNo + 1;
     }
-    
+
+    /**
+     * Gets the index value of player whose turn it is.
+     * Turn numbers go from 0 to 3 inclusive.
+     * @return Integer value of index of the player to play.
+     */
     public int getTurnOfPlayerNo() {
         return turnOfPlayer + 1;
     }
     
+    /**
+     * Updates the score card. This method is called at the end
+     * of each round to check for cards on the table and increment
+     * the winner player(s)'s value by one.
+     */
     private void updateScores() {
     	int[] winners;
     	int max;
@@ -124,7 +175,12 @@ public class CardGame {
         }
         System.out.println( " won this round! " );
     }
-    
+
+    /**
+     * Returns the winning players of this game. This method is called
+     * at the end of the game.
+     * @return Player array of winner(s).
+     */
     public Player[] getWinners() {
     	Player[] winnerPlayers;
         int[] winnerIntegers;
@@ -138,8 +194,11 @@ public class CardGame {
         return winnerPlayers;
     }
     
+    /**
+     * This method returns the current score card.
+     * @return String value of current score card.
+     */
     public String showScoreCard() {
         return scoreCard.toString();
-    }
-    
+    }   
 }

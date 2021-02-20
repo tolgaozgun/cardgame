@@ -6,12 +6,10 @@ import cardgame.*;
 //              When the game is over it dislays the winners.
 // author:
 // date:
-public class MyCardGame
-{
-    public static void main( String[] args )
-    {
+public class MyCardGame {
+	
+    public static void main( String[] args ) {
         Scanner scan = new Scanner( System.in );
-        
         
         // CONSTANTS
         final int MENU_EXIT    = 0;
@@ -52,7 +50,7 @@ public class MyCardGame
             
             // ask for and get selection
             System.out.println();
-            System.out.println( "Selection (" + MENU_EXIT + " to exit): ");
+            System.out.println( "Selection (" + MENU_EXIT + " to exit): " );
             selection = scan.nextInt();
             
             // process selection
@@ -79,17 +77,23 @@ public class MyCardGame
             	System.out.println( winner.getName() );
             }
         } else {
-        	System.out.println( "You quit too early! Game was not over yet..");
-        	System.out.println( "" );
+        	System.out.println( "You ended the game! Winners are: ");
+            for( Player winner: game.getWinners()) {
+            	System.out.println( winner.getName() );
+            }
         	game.showScoreCard();
-        }
-        
+        }   
     }
 
-    // get the card, c, that player p wants to play
-    // pass c to the game, see if it accepted c from p
-    // if game didn't accept the card, give c back to the player! 
-    // return accepted.
+    /**
+     * Plays the card for player in the current card game instance.
+     * If it is not successful, returns the card to player with a
+     * warning message.
+     * 
+     * @param p The player to be played for.
+     * @param game Current CardGame instance.
+     * @return Boolean value whether it was successful.
+     */
     private static boolean play( Player p, CardGame game ) {
         Card       c;
         boolean    accepted;
@@ -104,5 +108,4 @@ public class MyCardGame
         }
         return accepted;
     }
-    
 } 

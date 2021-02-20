@@ -7,11 +7,9 @@ import cardgame.ScoreCard;
 // CardGameTest
 // author:
 // date:
-public class CardGameTest
-{
-    public static void main( String[] args)
-    {
-        System.out.println( "Start of CardGameTest\n");
+public class CardGameTest {
+    public static void main( String[] args ) {
+        System.out.println( "Start of CardGameTest\n" );
         
         // CONSTANTS
         
@@ -37,7 +35,6 @@ public class CardGameTest
         // test Cards class
         cards = new Cards( true );
         cards.addTopCard( card );
-        cards.testOnlyPrint();  // remove method after testing!
         
         // test ScoreCard class
         scores = new ScoreCard( 4 );
@@ -68,12 +65,6 @@ public class CardGameTest
         game.playTurn( player3, card );
         System.out.println( "Turn: " + game.getTurnOfPlayerNo() + " Round: " + game.getRoundNo() );
         game.playTurn( player4, card );
-        
-        
-        // Once you have all the bits working, complete the MyCardGame program
-        // that provides a menu allowing any of the players to play their card,
-        // an option to see the score card, and one to quit the game at any time.
-        // When the game is over it should print out the winners.
         
         System.out.println( "\nEnd of CardGameTest\n" );
     }

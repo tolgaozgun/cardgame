@@ -2,33 +2,59 @@ package cardgame;
 
 import java.util.Arrays;
 
-// ScoreCard - Maintains one integer score per player, for any number of players
-//             Caution: invalid playernumbers result in run-time exception!
-// author:
-// date:
+/**
+ * 
+ * Maintains one integer score per player, for any number of players
+ * Caution: invalid player numbers result in run-time exception!
+ * 
+ * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
+ * @version 1.02
+ * @date 20/02/2021
+ *
+ */
+
 public class ScoreCard {
-    // properties
+    // Properties
     int[] scores;
     
-    // constructors
+    // Constructors
+    /**
+     * Creates a new score card with given number of players
+     * @param noOfPlayers Number of players.
+     */
     public ScoreCard( int noOfPlayers ) {
         scores = new int[ noOfPlayers ];
         
-        // init all scores to zero
+        // Initialize all scores to be zero.
         for ( int i = 0; i < scores.length; i++) {
             scores[i] = 0;
         }
     }
     
-    // methods
+    // Methods
+    /**
+     * Returns the score of a player with the given index value
+     * @param playerNo Integer index value of a player.
+     * @return The score of the specified player.
+     */
     public int getScore( int playerNo ) {
         return scores[ playerNo ];
     }
     
+    /**
+     * Updates the score of a player.
+     * @param playerNo Integer index value of a player.
+     * @param amount The score to be added to this player.
+     */
     public void update( int playerNo, int amount ) {
         scores[ playerNo ] += amount;
     }
     
+    /**
+     * Gets the current score card as a String.
+     * @return String value of the current score card.
+     */
+    @Override
     public String toString() {
         String s;
         s = "\n"
@@ -44,6 +70,11 @@ public class ScoreCard {
         return s;
     }
     
+    /**
+     * Get the winners of the game. Called at the end of the game.
+     * Returns index values of players.
+     * @return Integer array containing winner player(s)'s index.
+     */
 	public int[] getWinners() {
 		int maxValue;
 		int[] returnArray;
@@ -52,24 +83,6 @@ public class ScoreCard {
 		maxValue = scores[ 0 ];
 		returnArray = new int[ scores.length ];
 		returnSize = 0;
-		
-		/*
-		 * 
-		// 4 6 5 6
-		
-		// max: integers[0]
-		// returnArray: int[] { 0 } 
-		
-		// max: 4
-		// returnArray: { 1 }
-		
-		// returnArray: { 1, 2 }
-		
-		// max: 1
-		// returnArray: { 0 }
-		
-		int[] integers = { 1, 4, 4, 7 };
-		 */
 		
 		for( int i = 0; i < scores.length; i++ ) {
 			if( scores[ i ] > maxValue ) {
@@ -84,4 +97,4 @@ public class ScoreCard {
 		}
 		return Arrays.copyOf(returnArray, returnSize);
 	}
-} // end class ScoreCard
+} 

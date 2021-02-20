@@ -1,21 +1,34 @@
+
+/**
+ * Maintains a collection of zero or more playing cards.
+ * Provides facilities to create a full pack of 52 cards
+ * and to shuffle the cards.
+ * 
+ * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
+ * @version 1.02 
+ * @date 20/02/2021
+ * 
+ */
+
 package cardgame;
 
 import java.util.Random;
 
-
-// Cards - Maintains a collection of zero or more playing cards.
-//         Provides facilities to create a full pack of 52 cards
-//         and to shuffle the cards.
-// author:
-// date:
 public class Cards {
+	
+	// Constants
     final int NOOFCARDSINFULLPACK = 52;
     
-    // properties
+    // Properties
     Card[] cards;
     int    valid;  // number of cards currently in collection
     
-    // constructors
+    // Constructors
+    /**
+     * Constructor for Cards class. Creates a full pack of cards
+     * for this instance if the parameter is set to true.
+     * @param fullPack Whether it should create a full pack of cards.
+     */
     public Cards( boolean fullPack ) {
         cards = new Card[ NOOFCARDSINFULLPACK ];
         valid = 0;
@@ -25,7 +38,12 @@ public class Cards {
         }
     }
     
-    // methods
+    // Methods
+    /**
+     * If current deck is not empty, takes a card from top,
+     * removes it from the cards array and returns the card.
+     * @return The Card object with highest index in the cards array.
+     */
     public Card getTopCard() {
         Card tmp;
         if ( valid <= 0 ) {
@@ -38,6 +56,12 @@ public class Cards {
         }
     }
     
+    /**
+     * If the current deck is not full adds a given card
+     * to the top of the current deck.
+     * @param c The card to be added
+     * @return Whether the operation is successful.
+     */
     public boolean addTopCard( Card c ) {
         if ( valid < cards.length ) {
             cards[valid] = c;   // should this be cloned?
@@ -47,13 +71,29 @@ public class Cards {
         return false;
     }
     
+    /**
+     * Creates a full pack of cards for this card array.
+     */
     private void createFullPackOfCards() {
     	for( int i = 0; i < NOOFCARDSINFULLPACK; i++ ) {
     		addTopCard( new Card(i) );
     	}
     }
 
-	
+    /**
+     * Shuffles the current deck of cards.
+     * 
+     * Iterates over each card in this deck and chooses
+     * a random new position for each card. Swaps the 
+     * cards in both positions.
+     * 
+     * This also could have been done using a method
+     * from List interface. However, it would require
+     * conversion from array to list and back to array.
+     * Method from the list interface:
+     * 
+     * Collections.shuffle(cards);
+     */
 	public void shuffle() {
 		Random random;
 		Card temp;
@@ -65,16 +105,5 @@ public class Cards {
 			cards[newIndex] = cards[i];
 			cards[i] = temp;
 		}
-		// List interface has the following method:
-		// Collections.shuffle(cards);
-	}
-    
-    
-    // For testOnly... remove from production version!
-    public void testOnlyPrint() {
-        for ( int i =0; i < valid; i++ ) {
-            System.out.println( cards[i] );
-        }
-    }
-    
-} // end class Cards
+	}    
+}
