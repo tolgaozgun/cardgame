@@ -112,14 +112,14 @@ public class CardGame {
 
 	/**
 	 * Gets the score of a player with the specified index value. Index value should
-	 * be between 0-3 inclusive. Returns 0 for undefined players
+	 * be between 0-3 inclusive. Returns -1 for undefined players
 	 * 
 	 * @param playerNumber The integer value of the index of a player.
 	 * @return The score of the specified player.
 	 */
 	public int getScore( int playerNumber ) {
 		if ( playerNumber >= NUM_PLAYERS || playerNumber < 0 ) {
-			return 0;
+			return -1;
 		}
 		return scoreCard.getScore( playerNumber );
 	}
