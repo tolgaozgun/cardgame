@@ -54,7 +54,7 @@ public class CardGameTest {
 		player1.add( card );
 		System.out.println( player1.getName() + " plays " + player1.playCard() );
 
-		// test CardGame class too?
+		// test CardGame class
 		player2 = new Player( "Player2" );
 		player3 = new Player( "Player3" );
 		player4 = new Player( "Player4" );
@@ -75,5 +75,4 @@ public class CardGameTest {
 
 		System.out.println( "\nEnd of CardGameTest\n" );
 	}
-
-} // end of class CardGameTest
+}
