@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * turn requests.
  *  
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.07
+ * @version 1.08
  * @date 21/02/2021
  */
 
@@ -56,7 +56,7 @@ public class CardGame {
         	cardsOnTable[i] = new Cards(false);
         }
         turnOfPlayer = 0;
-        roundNo = 1;
+        roundNo = 0;
     }
     
     /**
@@ -105,7 +105,7 @@ public class CardGame {
      * @return Boolean if the game is over.
      */
     public boolean isGameOver() {
-        return roundNo > MAX_ROUNDS;
+        return roundNo > ( MAX_ROUNDS - 1 );
     }
      
     /**
@@ -141,7 +141,7 @@ public class CardGame {
      * @return Integer value of current round number.
      */
     public int getRoundNo() {
-        return roundNo;
+        return roundNo + 1;
     }
 
     /**
