@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * turn requests.
  *  
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.08
+ * @version 1.09
  * @date 21/02/2021
  */
 
@@ -105,7 +105,7 @@ public class CardGame {
      * @return Boolean if the game is over.
      */
     public boolean isGameOver() {
-        return roundNo > ( MAX_ROUNDS - 1 );
+        return roundNo >= MAX_ROUNDS;
     }
      
     /**
