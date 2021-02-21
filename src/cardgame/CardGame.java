@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * requests.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 2.2
+ * @version 2.3
  * @date 21/02/2021
  */
 
@@ -45,10 +45,9 @@ public class CardGame {
 		fullPack.shuffle();
 
 		for ( int i = 0; i < MAX_ROUNDS; i++ ) {
-			players.get( 0 ).add( fullPack.getTopCard() );
-			players.get( 1 ).add( fullPack.getTopCard() );
-			players.get( 2 ).add( fullPack.getTopCard() );
-			players.get( 3 ).add( fullPack.getTopCard() );
+			for ( int j = 0; j < NUM_PLAYERS; j++ ) {
+				players.get( j ).add( fullPack.getTopCard() );
+			}
 		}
 
 		scoreCard = new ScoreCard( NUM_PLAYERS );
