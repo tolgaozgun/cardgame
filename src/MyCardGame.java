@@ -7,7 +7,7 @@ import cardgame.*;
  * over it displays the winners.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 1.07
+ * @version 2.2
  * @date 21/02/2020
  */
 

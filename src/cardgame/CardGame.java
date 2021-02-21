@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * requests.
  * 
  * @author Tolga Ozgun, Deniz Gokcen, Burcu Kaplan
- * @version 2.0
+ * @version 2.2
  * @date 21/02/2021
  */
 
@@ -45,10 +45,10 @@ public class CardGame {
 		fullPack.shuffle();
 
 		for ( int i = 0; i < MAX_ROUNDS; i++ ) {
-			players.get(0).add( fullPack.getTopCard() );
-			players.get(1).add( fullPack.getTopCard() );
-			players.get(2).add( fullPack.getTopCard() );
-			players.get(3).add( fullPack.getTopCard() );
+			players.get( 0 ).add( fullPack.getTopCard() );
+			players.get( 1 ).add( fullPack.getTopCard() );
+			players.get( 2 ).add( fullPack.getTopCard() );
+			players.get( 3 ).add( fullPack.getTopCard() );
 		}
 
 		scoreCard = new ScoreCard( NUM_PLAYERS );
@@ -61,8 +61,8 @@ public class CardGame {
 	}
 
 	/**
-	 * This method plays a card for a player. Returns false if - Game is over - It
-	 * is not specified player's turn.
+	 * This method plays a card for a player. Returns false if game is over or
+	 * it is not specified player's turn.
 	 * 
 	 * @param p Player to play
 	 * @param c Card to play
@@ -73,10 +73,10 @@ public class CardGame {
 			return false;
 		}
 
-		if ( !isTurnOf(p) ) {
+		if ( !isTurnOf( p ) ) {
 			return false;
 		}
-		cardsOnTable[ players.indexOf(p) ].addTopCard( c );
+		cardsOnTable[ players.indexOf( p ) ].addTopCard( c );
 		System.out.println( "-----------------------------" );
 		System.out.println( p.getName() + " plays " + c );
 		System.out.println( "-----------------------------" );
@@ -98,7 +98,7 @@ public class CardGame {
 	 * @return Boolean whether it is the specified player's turn.
 	 */
 	public boolean isTurnOf( Player p ) {
-		return players.indexOf( p)  == turnOfPlayer;
+		return players.indexOf( p ) == turnOfPlayer;
 	}
 
 	/**
@@ -111,8 +111,8 @@ public class CardGame {
 	}
 
 	/**
-	 * Gets the score of a player with the specified index value. Index value should
-	 * be between 0-3 inclusive. Returns -1 for undefined players
+	 * Gets the score of a player with the specified index value. Index value
+	 * should be between 0-3 inclusive. Returns -1 for undefined players
 	 * 
 	 * @param playerNumber The integer value of the index of a player.
 	 * @return The score of the specified player.
@@ -125,8 +125,8 @@ public class CardGame {
 	}
 
 	/**
-	 * Gets the name of a player with the specified index value. Index value should
-	 * be between 0-3 inclusive.
+	 * Gets the name of a player with the specified index value. Index value
+	 * should be between 0-3 inclusive.
 	 * 
 	 * @param playerNumber The integer value of the index of a player.
 	 * @return The score of the specified player.
@@ -148,8 +148,8 @@ public class CardGame {
 	}
 
 	/**
-	 * Gets the index value of player whose turn it is. Turn numbers go from 0 to 3
-	 * inclusive.
+	 * Gets the index value of player whose turn it is. Turn numbers go from 0
+	 * to 3 inclusive.
 	 * 
 	 * @return Integer value of index of the player to play.
 	 */
@@ -159,57 +159,53 @@ public class CardGame {
 
 	/**
 	 * Updates the score card. This method is called at the end of each round to
-	 * check for cards on the table and increment the winner player(s)'s value by
-	 * one.
+	 * check for cards on the table and increment the winner player(s)'s value
+	 * by one.
 	 */
 	private void updateScores() {
-		int[] winners;
+		ArrayList<Integer> winners;
 		int max;
-		int winnerSize;
 		Player player;
 		Card c;
 
 		max = 0;
-		winners = new int[ NUM_PLAYERS ];
-		winnerSize = 0;
+		winners = new ArrayList<Integer>();
 		// Iterates over each player's top card on the table.
-		// If a new maximum is found, winner array is cleared and
+		// If a new maximum is found, winner list is cleared and
 		// the new player is put inside the array. Max value is
 		// changed to the found value.
 		// If the current value is equal to prior maximum value,
-		// current player is added to winners array.
+		// current player is added to winners list.
 		for ( int i = 0; i < NUM_PLAYERS; i++ ) {
 			c = cardsOnTable[ i ].getTopCard();
 			if ( c.getFaceValue() == max ) {
-				winners[ winnerSize ] = i;
-				winnerSize++;
+				winners.add( i );
 			} else if ( c.getFaceValue() > max ) {
 				max = c.getFaceValue();
-				winners = new int[ NUM_PLAYERS ];
-				winners[ 0 ] = i;
-				winnerSize = 1;
+				winners.clear();
+				winners.add( i );
 			}
 		}
 
 		// Iterates over each winner and gets the player
 		// object from their index value. Then prints
 		// their name and announces them as winners.
-		for ( int i = 0; i < winnerSize; i++ ) {
-			player = players.get( winners[i] );
+		for ( int i = 0; i < winners.size(); i++ ) {
+			player = players.get( winners.get( i ) );
 			System.out.print( player.getName() );
 
-			if ( i != winnerSize - 1 ) {
-				System.out.print(", ");
+			if ( i != winners.size() - 1 ) {
+				System.out.print( ", " );
 			}
 
-			scoreCard.update( winners[i], 1 );
+			scoreCard.update( winners.get( i ), 1 );
 		}
 		System.out.println( " won this round! " );
 	}
 
 	/**
-	 * Returns the winning players of this game. This method is called at the end of
-	 * the game.
+	 * Returns the winning players of this game. This method is called at the
+	 * end of the game.
 	 * 
 	 * @return Player array of winner(s).
 	 */
